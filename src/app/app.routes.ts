@@ -6,16 +6,40 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
+import { AlertComponent } from './alert/alert.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UserDataComponent } from './user-data/user-data.component';
+import { UserImagesComponent } from './user-images/user-images.component';
+import { HomePersonalInformation,HomePersonalImages } from './profile-data/profile-data.component';
+
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    {path:'register',component:RegisterComponent}
+    {path:'register',component:RegisterComponent},
+    { path: 'profile', component: ProfileComponent },
+    { path: 'profile/user-images', component: UserImagesComponent },
+    { path: 'profile/user-data', component: UserDataComponent },
+    { path: 'profile/home-personal-information', component: HomePersonalInformation },
+    { path: 'profile/home-personal-images', component: HomePersonalImages },
 ];
 
 
 @NgModule({
-    declarations:[HomeComponent,HeaderComponent,LoginComponent,RegisterComponent],
+    declarations:[
+        HomeComponent,
+        HeaderComponent,
+        LoginComponent,
+        RegisterComponent,
+        AlertComponent,
+        ProfileComponent,
+        UserImagesComponent,
+        UserDataComponent,
+        HomePersonalInformation,
+        HomePersonalImages
+    
+    ],
+
     imports: [RouterModule.forRoot(routes),FormsModule,CommonModule],
     exports: [RouterModule],
     providers:[]
