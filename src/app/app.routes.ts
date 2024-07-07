@@ -11,10 +11,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { UserImagesComponent } from './user-images/user-images.component';
 import { HomePersonalInformation,HomePersonalImages } from './profile-data/profile-data.component';
-
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { NewPostComponent } from './new-post/new-post.component';
+import { CardsComponent } from './card/cards.component';
+import { CardComponent } from './card/card.component';
+import { CardModalComponent } from './card/card-modal.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'search/:query', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     {path:'register',component:RegisterComponent},
     { path: 'profile', component: ProfileComponent },
@@ -22,6 +28,9 @@ export const routes: Routes = [
     { path: 'profile/user-data', component: UserDataComponent },
     { path: 'profile/home-personal-information', component: HomePersonalInformation },
     { path: 'profile/home-personal-images', component: HomePersonalImages },
+    { path: 'profile-page/:userId', component: ProfilePageComponent },
+    { path: 'profile/new-post', component: NewPostComponent },
+    { path: 'profile/edit-post/:postId', component: EditPostComponent },
 ];
 
 
@@ -36,7 +45,13 @@ export const routes: Routes = [
         UserImagesComponent,
         UserDataComponent,
         HomePersonalInformation,
-        HomePersonalImages
+        HomePersonalImages,
+        ProfilePageComponent,
+        NewPostComponent,
+        CardsComponent,
+        CardComponent,
+        CardModalComponent,
+        EditPostComponent
     
     ],
 

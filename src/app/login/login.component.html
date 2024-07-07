@@ -18,7 +18,12 @@
                 <span class="text-muted">|</span>
                 <a  style="font-size: 120%;" routerLink="/register">Registrar</a>
             </div>
-            <button type="submit" class="btn btn-primary btn-block" (click)="login()">Login</button>
+            <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+            <button type="button" class="btn btn-danger"  id="btn-google" (click)="login_with_google()">
+                <i class="bi bi-google"></i>
+                Entrar com Google
+
+            </button>
         </div>
     </div>
 </div>

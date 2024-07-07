@@ -54,7 +54,7 @@ export class UserImagesComponent  implements OnInit{
     onAuthStateChanged(auth, (user) => {
       if (user) {
         
-        console.log(user)
+        //console.log(user)
         this.UserId = user.uid;
         this.getData(user.uid)
       } else {
@@ -67,11 +67,11 @@ export class UserImagesComponent  implements OnInit{
    async  getImage(path:string) : Promise<string> {
     try {
       const url = await getDownloadURL(ref(storage_firebase, path));
-      console.log(`url da Imagem : ${url}`);
+      //console.log(`url da Imagem : ${url}`);
       return url;
     } catch (error) {
       // Handle any errors
-      console.error(error);
+      //console.error(error);
       return "";
     }
   }
@@ -92,7 +92,7 @@ export class UserImagesComponent  implements OnInit{
       }
     } else {
       // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+      //console.log("No such document!");
     }
   }
 
@@ -104,7 +104,7 @@ export class UserImagesComponent  implements OnInit{
     if (input.files && input.files.length > 0) {
       this.profilePicture = input.files[0];
       this.images_profile['profile_picture'] = this.generateImageName.frenameFile(this.profilePicture.name)
-      console.log(this.profilePicture.name);
+      //console.log(this.profilePicture.name);
     }
   }
 
@@ -113,7 +113,7 @@ export class UserImagesComponent  implements OnInit{
     if (input.files && input.files.length > 0) {
       this.coverImage = input.files[0];
       this.images_profile['cover_image'] = this.generateImageName.frenameFile(this.coverImage.name)
-      console.log(this.coverImage.name);
+      //console.log(this.coverImage.name);
     }
   }
 
@@ -129,18 +129,18 @@ export class UserImagesComponent  implements OnInit{
         let storageRef = ref(storage_firebase, `${this.UserId}/${this.images_profile.profile_picture}`);
 
         uploadBytes(storageRef, images.profile_picture).then((snapshot) => {
-          console.log('Imagem Principal')
-          console.log(snapshot)
-          console.log('Uploaded a blob or file!');
+          //console.log('Imagem Principal')
+          //console.log(snapshot)
+          //console.log('Uploaded a blob or file!');
         });
 
         //Registra Imagem de Capa
         storageRef = ref(storage_firebase, `${this.UserId}/${this.images_profile.cover_image}`);
 
         uploadBytes(storageRef, images.cover_image).then((snapshot) => {
-          console.log('Imagem de Capa')
-          console.log(snapshot)
-          console.log('Uploaded a blob or file!');
+          //console.log('Imagem de Capa')
+          //console.log(snapshot)
+          //console.log('Uploaded a blob or file!');
         });
 
         await setDoc(doc(db_firestore, "users", this.UserId), this.images_profile,{ merge: true });
@@ -151,7 +151,7 @@ export class UserImagesComponent  implements OnInit{
       }catch(e){
         this.changeText = "Aconteceu algum erro :("
         this.changeStatus = "alert alert-danger"
-        console.log(e)
+        //console.log(e)
         
       }
 

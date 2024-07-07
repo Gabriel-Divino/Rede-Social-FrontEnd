@@ -1,5 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { api_url } from '../endpoint';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -9,17 +12,44 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  Storage : any;
+    Posts:any = "";
+    Query:string|null = "";
 
-  constructor(private router: Router) {
+
+  constructor(private router: Router,private route: ActivatedRoute) {
     
    }
 
   ngOnInit(): void {
-   const user : any = localStorage.getItem('user')
-    if(user == null){
-      this.router.navigate(['/login']);
-    }
+    this.route.paramMap.subscribe(params => {
+      const query = params.get('query');
+      let url : string
+      if(query == null){
+        url =   `${api_url}/posts/search`
+      }else{
+        url = `${api_url}/posts/search?q=${query}`
+      }
+      this.getPosts(url)
+    
+    });
+     
+  }
+
+
+  getPosts(url:string){
+
+    
+
+    fetch(url)
+    .then(response=>response.json())
+    .then(response=>{
+        //console.log(response)
+        if(response.length > 0){
+          this.Posts = response
+        }
+        
+    })
+
   }
 
 

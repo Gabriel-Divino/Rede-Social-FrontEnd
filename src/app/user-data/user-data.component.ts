@@ -48,7 +48,7 @@ export class UserDataComponent implements OnInit{
     onAuthStateChanged(auth, (user) => {
       if (user) {
         
-        console.log(user)
+        //console.log(user)
         this.UserId = user.uid;
         this.getData(user.uid)
       } else {
@@ -74,7 +74,7 @@ export class UserDataComponent implements OnInit{
       }
     } else {
       // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+      //console.log("No such document!");
     }
   }
 
@@ -93,14 +93,14 @@ export class UserDataComponent implements OnInit{
           
         }
 
-        console.log(user_data)
+        //console.log(user_data)
         await setDoc(doc(db_firestore, "users", this.UserId), user_data,{ merge: true });
         this.changeText = "Seus dados foram Salvos com Sucesso !"
         this.changeStatus = "alert alert-success"
       }catch(e){
         this.changeText = "Aconteceu algum erro :("
         this.changeStatus = "alert alert-danger"
-        console.log(e)
+        //console.log(e)
         
       }
       
